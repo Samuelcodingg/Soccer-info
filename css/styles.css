@@ -1,0 +1,20 @@
+/*General*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/*Utilities*/
+.rampart-font {
+    font-family: 'Rampart One', cursive;
+}
+
+/*index page*/
+.image-team {
+    height: 15px;
+}
