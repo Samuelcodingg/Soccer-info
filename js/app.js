@@ -56,19 +56,20 @@ async function getLeagueTable(league) {
             cleanHTML(leagueTableBody);
     
             teams.forEach(team => {
+                let {position, team: {crestUrl, name, id}, playedGames, won, draw, lost, goalsFor, goalsAgainst, goalDifference, points } = team;
                 let row = document.createElement('tr');
                 let stringTemplate = `
-                  <th scope="row">${team.position}</th>
-                  <td class="align-self-center"><img src="${team.team.crestUrl}" class="image-team">  ${team.team.name}</td>
-                  <td>${team.playedGames}</td>
-                  <td>${team.won}</td>
-                  <td>${team.draw}</td>
-                  <td>${team.lost}</td>
-                  <td>${team.goalsFor}</td>
-                  <td>${team.goalsAgainst}</td>
-                  <td>${team.goalDifference}</td>
-                  <td>${team.points}</td>
-                  <td><a href="#" class="text-dark">schedule <i class="fas fa-long-arrow-alt-right"></i></a></td>
+                  <th scope="row">${position}</th>
+                  <td class="align-self-center"><img src="${crestUrl}" class="image-team">  ${name}</td>
+                  <td>${playedGames}</td>
+                  <td>${won}</td>
+                  <td>${draw}</td>
+                  <td>${lost}</td>
+                  <td>${goalsFor}</td>
+                  <td>${goalsAgainst}</td>
+                  <td>${goalDifference}</td>
+                  <td>${points}</td>
+                  <td><a href="team-schedule.html?id=${id}" class="text-dark">schedule <i class="fas fa-long-arrow-alt-right"></i></a></td>
                 `;
     
                 row.innerHTML = stringTemplate;
