@@ -5,6 +5,7 @@ window.sr = ScrollReveal();
 
 document.addEventListener('DOMContentLoaded', ()=>{
     
+    //scroll animations
     sr.reveal('header', {
         duration: 3000,
         origin: 'bottom',
@@ -21,8 +22,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
         duration: 3000
     })
 
-    //event for get league table data
+    //event for getting league table data
     btnSearch.addEventListener('click', getDataTable);
+
 })
 
 function getDataTable(e) {
@@ -52,7 +54,7 @@ async function getLeagueTable(league) {
         .then(resp => resp.json())
         .then(result => {
             const teams = result.standings[0].table;
-    
+            console.log(teams);
             cleanHTML(leagueTableBody);
     
             teams.forEach(team => {
@@ -78,7 +80,7 @@ async function getLeagueTable(league) {
         });
     }
     catch(error) {
-        swal("Request failed", error, "error");
+        console.log(error);
     }
 
     
@@ -91,13 +93,3 @@ function cleanHTML(element) {
     }
 }
 
-//request for schedule
-
-// fetch("https://api.football-data.org/v2/teams/66/matches?status=SCHEDULED",{
-//     "method" : "GET",
-//     "headers" : {
-//         "X-Auth-Token" : "fb158dbd69914356b52d87836a01a36f"
-//     }
-// })
-// .then(resp => resp.json())
-// .then(result => console.log(result));
